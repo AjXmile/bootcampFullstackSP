@@ -1,0 +1,65 @@
+.container{
+    height: 100vh;
+    width: 100%;
+    background-image: url(background.png);
+    background-position: center;
+    background-size: cover;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.title{
+    font-family: "Lato", "Times New Roman", serif;
+    color: darkslateblue;
+    alignment: right;
+    font-size: 40px;
+}
+
+.name{
+    font-family: "Lato", "Times New Roman", serif;
+    color: royalblue;
+    alignment: right;
+    font-size: 55px;
+}
+
+.mail {
+    font-family: "Lato", "Times New Roman", serif;
+    color: royalblue;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.profesion{
+    font-family: "Lato",serif;
+    color: black;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.git_link{
+    font-family: "Lato Light",serif;
+    color: black;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.profile{
+    font-family: "Lato Light",serif;
+    color: black;
+    font-size: 20px;
+    font-style: italic;
+}
+.image{
+    height: 40%;
+    position: fixed;
+    top: 100px;
+    right: 100px;
+}
+.cite{
+    position: fixed;
+    top: 360px;
+    right: 150px;
+}
