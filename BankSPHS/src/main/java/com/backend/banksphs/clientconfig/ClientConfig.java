@@ -18,6 +18,7 @@ public class ClientConfig {
         return args -> {
             Client maria = new Client(
                     543L,
+                    "CC",
                     "Maria",
                     "Jamal",
                     "maria@gmail.com",
@@ -25,6 +26,7 @@ public class ClientConfig {
             );
             Client marian = new Client(
                     879L,
+                    "CE",
                     "Marian",
                     "Gez",
                     "marian@gmail.com",

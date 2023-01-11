@@ -19,6 +19,7 @@ public class Client {
     )
     private Long id;
     private Long id_num;
+    private String id_type;
     private String name;
     private String surname;
     private String  email;
@@ -32,17 +33,19 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long id, Long id_num, String name, String surname, String email, LocalDate dod) {
+    public Client(Long id, Long id_num,String id_type, String name, String surname, String email, LocalDate dod) {
         this.id = id;
         this.id_num = id_num;
+        this.id_type =id_type;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.dod = dod;
     }
 
-    public Client(Long id_num, String name, String surname, String email, LocalDate dod) {
+    public Client(Long id_num, String id_type, String name, String surname, String email, LocalDate dod) {
         this.id_num = id_num;
+        this.id_type =id_type;
         this.name = name;
         this.surname =surname;
         this.email = email;
@@ -55,6 +58,14 @@ public class Client {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getId_type() {
+        return id_type;
+    }
+
+    public void setId_type(String id_type) {
+        this.id_type = id_type;
     }
 
     public String getName() {
