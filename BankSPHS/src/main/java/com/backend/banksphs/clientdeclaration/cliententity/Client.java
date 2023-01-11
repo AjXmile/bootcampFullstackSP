@@ -1,4 +1,4 @@
-package com.backend.banksphs.client;
+package com.backend.banksphs.clientdeclaration.cliententity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,34 +18,35 @@ public class Client {
             generator = "client_sequence"
     )
     private Long id;
-    private Long id_num;
-    private String id_type;
+    private Long idNum;
+    private String idType;
     private String name;
     private String surname;
     private String  email;
     private LocalDate dod;
     @Transient
-    private Integer age;
+    private LocalDate age;
+    private String ownerCreation;
     private LocalDate creationDate;
-    private String Owner;
-    private LocalDate Owner_modification;
+    private String ownerModification;
+    private LocalDate modificationDate;
 
     public Client() {
     }
 
-    public Client(Long id, Long id_num,String id_type, String name, String surname, String email, LocalDate dod) {
+    public Client(Long id, Long idNum, String idType, String name, String surname, String email, LocalDate dod) {
         this.id = id;
-        this.id_num = id_num;
-        this.id_type =id_type;
+        this.idNum = idNum;
+        this.idType = idType;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.dod = dod;
     }
 
-    public Client(Long id_num, String id_type, String name, String surname, String email, LocalDate dod) {
-        this.id_num = id_num;
-        this.id_type =id_type;
+    public Client(Long idNum, String idType, String name, String surname, String email, LocalDate dod) {
+        this.idNum = idNum;
+        this.idType =idType;
         this.name = name;
         this.surname =surname;
         this.email = email;
@@ -60,12 +61,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getId_type() {
-        return id_type;
+    public String getIdType() {
+        return idType;
     }
 
-    public void setId_type(String id_type) {
-        this.id_type = id_type;
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 
     public String getName() {
@@ -92,12 +93,12 @@ public class Client {
         this.dod = dod;
     }
 
-    public Long getId_num() {
-        return id_num;
+    public Long getIdNum() {
+        return idNum;
     }
 
-    public void setId_num(Long id_num) {
-        this.id_num = id_num;
+    public void setIdNum(Long idNum) {
+        this.idNum = idNum;
     }
 
     public String getSurname() {
@@ -108,6 +109,10 @@ public class Client {
         this.surname = surname;
     }
 
+    public String getOwnerCreation() {return System.getProperty("user.name");}
+
+    public void setOwnerCreation(String ownerCreation) {this.ownerCreation = ownerCreation;}
+
     public LocalDate getCreationDate() {
         return LocalDate.now();
     }
@@ -116,42 +121,43 @@ public class Client {
         this.creationDate = creationDate;
     }
 
-    public String getOwner() {
-        return Owner;
+    public String getOwnerModification() {return System.getProperty("user.name");    }
+
+    public void setOwnerModification(String owner) {
+        this.ownerModification = owner;
     }
 
-    public void setOwner(String owner) {
-        Owner = owner;
+    public LocalDate getModificationDate() {
+        return modificationDate;
     }
 
-    public LocalDate getOwner_modification() {
-        return Owner_modification;
-    }
-
-    public void setOwner_modification(LocalDate owner_modification) {
-        Owner_modification = owner_modification;
+    public void setModificationDate(LocalDate ownerModification) {
+        this.modificationDate = ownerModification;
     }
 
     public Integer getAge() {
         return Period.between(this.dod, LocalDate.now()).getYears();
     }
 
-    public void setAge(Integer age) {
+    public void setAge(LocalDate age) {
         this.age = age;
     }
+
     @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +
-                ", id_num=" + id_num +
+                ", idNum=" + idNum +
+                ", idType='" + idType + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", dod=" + dod +
                 ", age=" + age +
+                ", ownerCreation='" + ownerCreation + '\'' +
                 ", creationDate=" + creationDate +
-                ", Owner='" + Owner + '\'' +
-                ", Owner_modification=" + Owner_modification +
+                ", ownerModification='" + ownerModification + '\'' +
+                ", modificationDate=" + modificationDate +
                 '}';
     }
 

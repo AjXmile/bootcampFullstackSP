@@ -1,7 +1,7 @@
-package com.backend.banksphs.clientcontroller;
+package com.backend.banksphs.clientdeclaration.clientcontroller;
 
-import com.backend.banksphs.client.Client;
-import com.backend.banksphs.clientservice.ClientService;
+import com.backend.banksphs.clientdeclaration.cliententity.Client;
+import com.backend.banksphs.clientdeclaration.clientservice.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,12 +37,12 @@ public class ClientController {
     @PutMapping(path = "{clientId}")
     public void updateClient(
             @PathVariable("clientId") Long clientId,
-            @RequestParam(required = false) Long id_num,
-            @RequestParam(required = false) String id_type,
+            @RequestParam(required = false) Long idNum,
+            @RequestParam(required = false) String idType,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String surname,
             @RequestParam(required = false) String email,
             @RequestParam(required = false) LocalDate dod){
-                clientService.updateClient(clientId,id_num,id_type,name,surname,email,dod);
+                clientService.updateClient(clientId,idNum,idType,name,surname,email,dod);
     }
 }

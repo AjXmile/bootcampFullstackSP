@@ -1,7 +1,7 @@
-package com.backend.banksphs.clientservice;
+package com.backend.banksphs.clientdeclaration.clientservice;
 
-import com.backend.banksphs.client.Client;
-import com.backend.banksphs.clientrepository.ClientRepository;
+import com.backend.banksphs.clientdeclaration.cliententity.Client;
+import com.backend.banksphs.clientdeclaration.clientrepository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class ClientService {
     }
 
     public void addNewClient(Client client) {
-        Optional<Client> clientByIdNumber = clientRepository.findClientByIdNumber(client.getId_num());
+        Optional<Client> clientByIdNumber = clientRepository.findClientByIdNumber(client.getIdNum());
         if (clientByIdNumber.isPresent()){
            throw new IllegalStateException("Alredy Registered");
         }
@@ -42,7 +42,7 @@ public class ClientService {
     }
 
     @Transactional
-    public void updateClient(Long clientId, Long id_num, String id_type,
+    public void updateClient(Long clientId, Long idNum, String idType,
                              String name, String surname,
                              String email, LocalDate dod) {
         Client client = clientRepository.findById(clientId)
@@ -59,15 +59,15 @@ public class ClientService {
         if (dod != null && !Objects.equals(client.getDod(), dod)){
             client.setDod(dod);
         }
-        if (id_type != null && id_type.length() > 0 && !Objects.equals(client.getId_type(), id_type)){
-            client.setId_type(id_type);
+        if (idType != null && idType.length() > 0 && !Objects.equals(client.getIdType(), idType)){
+            client.setIdType(idType);
         }
-        if (id_num != null && id_num > 0 && !Objects.equals(client.getId_num(), id_num)){
-            Optional<Client> clientOpcional = clientRepository.findClientByIdNumber(id_num);
+        if (idNum != null && idNum > 0 && !Objects.equals(client.getIdNum(), idNum)){
+            Optional<Client> clientOpcional = clientRepository.findClientByIdNumber(idNum);
             if (clientOpcional.isPresent()) {
                 throw new IllegalStateException("ID Number already Registered");
             }
-            client.setId_num(id_num);
+            client.setIdNum(idNum);
         }
     }
 }
