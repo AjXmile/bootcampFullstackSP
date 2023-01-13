@@ -1,7 +1,7 @@
-package com.backend.banksphs.clientdeclaration.clientconfig;
+package com.backend.banksphs.configuration;
 
-import com.backend.banksphs.clientdeclaration.cliententity.Client;
-import com.backend.banksphs.clientdeclaration.clientrepository.ClientRepository;
+import com.backend.banksphs.entity.Client;
+import com.backend.banksphs.repository.ClientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

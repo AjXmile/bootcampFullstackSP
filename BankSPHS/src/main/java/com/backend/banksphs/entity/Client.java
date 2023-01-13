@@ -1,4 +1,4 @@
-package com.backend.banksphs.clientdeclaration.cliententity;
+package com.backend.banksphs.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,7 +10,7 @@ public class Client {
     @Id
     @SequenceGenerator(
             name = "client_sequence",
-            sequenceName = "client_sequence",
+            sequenceName = "client_sequence_id",
             allocationSize = 1
     )
     @GeneratedValue(

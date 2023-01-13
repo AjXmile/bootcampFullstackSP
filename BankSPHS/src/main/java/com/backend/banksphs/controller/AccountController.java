@@ -1,7 +1,7 @@
-package com.backend.banksphs.accountdeclaration.accountcontroller;
+package com.backend.banksphs.controller;
 
-import com.backend.banksphs.accountdeclaration.accountentity.Account;
-import com.backend.banksphs.accountdeclaration.accountservice.AccountService;
+import com.backend.banksphs.entity.Account;
+import com.backend.banksphs.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

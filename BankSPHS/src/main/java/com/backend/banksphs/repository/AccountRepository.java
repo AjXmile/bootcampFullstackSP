@@ -1,6 +1,6 @@
-package com.backend.banksphs.accountdeclaration.accountrepository;
+package com.backend.banksphs.repository;
 
-import com.backend.banksphs.accountdeclaration.accountentity.Account;
+import com.backend.banksphs.entity.Account;
 import com.backend.banksphs.generationstatus.AccountStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

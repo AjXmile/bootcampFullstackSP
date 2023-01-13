@@ -1,7 +1,7 @@
-package com.backend.banksphs.accountdeclaration.accountservice;
+package com.backend.banksphs.service;
 
-import com.backend.banksphs.accountdeclaration.accountentity.Account;
-import com.backend.banksphs.accountdeclaration.accountrepository.AccountRepository;
+import com.backend.banksphs.entity.Account;
+import com.backend.banksphs.repository.AccountRepository;
 import com.backend.banksphs.generationstatus.AccountStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

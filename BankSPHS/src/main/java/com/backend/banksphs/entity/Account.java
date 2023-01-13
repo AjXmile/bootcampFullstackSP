@@ -1,4 +1,4 @@
-package com.backend.banksphs.accountdeclaration.accountentity;
+package com.backend.banksphs.entity;
 
 import com.backend.banksphs.generationstatus.AccountStatus;
 
@@ -6,20 +6,23 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+
 @Entity
-@Table
+@Table (name = "Account")
+
 public class Account {
     @Id
     @SequenceGenerator(
-            name = "client_sequence",
-            sequenceName = "client_sequence",
+            name = "account_sequence",
+            sequenceName = "account_sequence_id",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "client_sequence"
+            generator = "account_sequence"
     )
     private Long id;
+    private Long clientId;
     private String accountType;
     private Long accountId;
     private AccountStatus accountStatus;
@@ -63,6 +66,14 @@ public class Account {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public String getAccountType() {

@@ -1,6 +1,6 @@
-package com.backend.banksphs.clientdeclaration.clientrepository;
+package com.backend.banksphs.repository;
 
-import com.backend.banksphs.clientdeclaration.cliententity.Client;
+import com.backend.banksphs.entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

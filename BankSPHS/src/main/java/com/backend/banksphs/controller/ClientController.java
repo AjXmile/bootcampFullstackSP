@@ -1,7 +1,7 @@
-package com.backend.banksphs.clientdeclaration.clientcontroller;
+package com.backend.banksphs.controller;
 
-import com.backend.banksphs.clientdeclaration.cliententity.Client;
-import com.backend.banksphs.clientdeclaration.clientservice.ClientService;
+import com.backend.banksphs.entity.Client;
+import com.backend.banksphs.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
