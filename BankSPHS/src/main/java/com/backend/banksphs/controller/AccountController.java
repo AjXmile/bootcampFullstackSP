@@ -18,18 +18,17 @@ public class AccountController {
     }
 
     @GetMapping
-    public List<Account> getAccount() {return accountService.getAccount();}
+    public void getAccount(Account account) {accountService.getAccount(account);}
 
     @GetMapping
-    public  List<Account> getActiveAccounts(){return accountService.getActiveAccount();}
+    public void getActiveAccounts(Account account){accountService.getActiveAccount(account);}
 
     @GetMapping
-    public  List<Account> getInactiveAccounts() {return accountService.getInactiveAccount();}
+    public void getInactiveAccounts(Account account) {accountService.getInactiveAccount(account);}
 
-    @PostMapping
-    public void findAccount(@RequestBody Account account){accountService.findAccount(account);}
+    @GetMapping
+    public void getCancelAccounts(Account account) {accountService.getCancelAccount(account);}
 
-
-
-
-}
+    @PostMapping(path = "{accountId}")
+    public void findAccount(@PathVariable("accountId") Long accountId){accountService.findAccount(accountId);}
+    }

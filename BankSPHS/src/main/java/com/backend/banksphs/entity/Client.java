@@ -121,7 +121,7 @@ public class Client {
         this.creationDate = creationDate;
     }
 
-    public String getOwnerModification() {return System.getProperty("user.name");    }
+    public String getOwnerModification(String property) {return System.getProperty("user.name");    }
 
     public void setOwnerModification(String owner) {
         this.ownerModification = owner;

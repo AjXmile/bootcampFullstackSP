@@ -1,6 +1,7 @@
 package com.backend.banksphs.entity;
 
 import com.backend.banksphs.generationstatus.AccountStatus;
+import com.backend.banksphs.generationstatus.AccountType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table (name = "Account")
+@Table
 
 public class Account {
     @Id
@@ -22,7 +23,6 @@ public class Account {
             generator = "account_sequence"
     )
     private Long id;
-    private Long clientId;
     private String accountType;
     private Long accountId;
     private AccountStatus accountStatus;
@@ -31,6 +31,7 @@ public class Account {
     private String exemptGMF;
 
     @Transient
+    private Long clientId;
     private LocalDate creationDate;
     private String ownerCreation;
     private LocalDate modificationDate;
@@ -39,22 +40,22 @@ public class Account {
     public Account(){
     }
 
-    public Account(Long id, String accountType, Long accountId, String accountStatus,
+    public Account(Long id, String accountType, Long accountId, AccountStatus accountStatus,
                    BigDecimal amount, BigDecimal currentBalance, String exemptGMF) {
         this.id = id;
         this.accountType = accountType;
         this.accountId = accountId;
-        this.accountStatus = AccountStatus.valueOf(accountStatus);
+        this.accountStatus = accountStatus;
         this.amount = amount;
         this.currentBalance = currentBalance;
         this.exemptGMF = exemptGMF;
     }
 
-    public Account(String accountType, Long accountId, String accountStatus, BigDecimal amount,
-                   BigDecimal currentBalance, String exemptGMF) {
+    public Account(String accountType, Long accountId, AccountStatus accountStatus,
+                   BigDecimal amount, BigDecimal currentBalance, String exemptGMF) {
         this.accountType = accountType;
         this.accountId = accountId;
-        this.accountStatus = AccountStatus.valueOf(accountStatus);
+        this.accountStatus = accountStatus;
         this.amount = amount;
         this.currentBalance = currentBalance;
         this.exemptGMF = exemptGMF;
@@ -76,12 +77,12 @@ public class Account {
         this.clientId = clientId;
     }
 
-    public String getAccountType() {
+    public String getAccountType(AccountType savings) {
         return accountType;
     }
 
     public void setAccountType(String accountType) {
-        this.accountType = accountType;
+        this.accountType = String.valueOf(AccessType.valueOf(accountType));
     }
 
     public Long getAccountId() {

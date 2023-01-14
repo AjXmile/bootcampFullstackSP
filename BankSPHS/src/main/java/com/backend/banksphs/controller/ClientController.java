@@ -20,8 +20,12 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<Client> getClient(){
-        return clientService.getClient();
+    public void getClient(Client client){
+        clientService.getClient(client);
+    }
+    @GetMapping
+    public List<Client> getClients(){
+        return clientService.getClients();
     }
 
     @PostMapping

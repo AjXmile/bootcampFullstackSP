@@ -1,13 +1,14 @@
 package com.backend.banksphs.service;
 
 import com.backend.banksphs.entity.Account;
-import com.backend.banksphs.repository.AccountRepository;
 import com.backend.banksphs.generationstatus.AccountStatus;
+import com.backend.banksphs.generationstatus.AccountType;
+import com.backend.banksphs.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -21,23 +22,55 @@ public class AccountService {
         this.accountrepository = accountrepository;
     }
 
-    public List<Account> getAccount() {
-        return accountrepository.findAll();
-    }
-
-    public List<Account> getActiveAccount() {
-        return accountrepository.findByAccountStatus(AccountStatus.ACTIVE);
-    }
-
-    public List<Account> getInactiveAccount() {
-        return accountrepository.findByAccountStatus(AccountStatus.INACTIVE);
-    }
-
-    public void findAccount(Account account) {
-        Optional<Account> accountById = accountrepository.findAccountById(account.getAccountId());
-        if (accountById.isPresent()) {
-            throw new IllegalStateException("Alredy Registered Account");
+    public void addNewAccountToClient(Account account) {
+        Optional<Account> accountByIdNumber = accountrepository.findAccountById(account.getId());
+        if (accountByIdNumber.isPresent()){
+            throw new IllegalStateException("Already Registered");
         }
-        accountrepository.getReferenceById(account.getAccountId());
+        if (Objects.equals(account.getAccountType(AccountType.SAVINGS), AccountType.SAVINGS)){
+            return
+        }
+        accountrepository.save(account);
+    }
+    public void getAccount(Account account) {
+        Optional<Account> accountByIdNum = accountrepository.findAccountById(account.getId());
+        if (accountByIdNum.isEmpty()){
+            throw new IllegalStateException("It's not a Account");
+        }
+        accountrepository.findAccountById(account.getId());
+    }
+
+    public void getActiveAccount(Account account) {
+        Optional<Account> accountOptional =
+                accountrepository.findAccountById(accountrepository.findByAccountStatus(AccountStatus.ACTIVE));
+        if (accountOptional.isEmpty()){
+            throw new IllegalStateException("Not Active Accounts");
+        }
+        accountrepository.findAccountById(account.getId());
+    }
+
+    public void getInactiveAccount(Account account) {
+        Optional<Account> accountOptional =
+                accountrepository.findAccountById(accountrepository.findByAccountStatus(AccountStatus.INACTIVE));
+        if (accountOptional.isEmpty()){
+            throw new IllegalStateException("Not Inactive Accounts");
+        }
+        accountrepository.findAccountById(account.getId());
+    }
+
+    public void getCancelAccount(Account account) {
+        Optional<Account> accountOptional =
+                accountrepository.findAccountById(accountrepository.findByAccountStatus(AccountStatus.CANCEL));
+        if (accountOptional.isEmpty()){
+            throw new IllegalStateException("Not Cancel Accounts");
+        }
+        accountrepository.findAccountById(account.getId());
+    }
+    public void findAccount(Long accountId) {
+        Optional<Account> accountById = accountrepository.findAccountById(accountId);
+        if (accountById.isPresent()) {
+            throw new IllegalStateException("Already Registered Account");
+        }
+        accountrepository.getReferenceById(accountId);
     }
 }
